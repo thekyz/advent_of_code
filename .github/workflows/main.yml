@@ -10,12 +10,12 @@ jobs:
     steps:
       - name: install bazelisk
         run: |
-          npm install -g @bazel/bazelisk
+          sudo npm install -g @bazel/bazelisk
 
       - name: install compiler
         run: |
-          apt update
-          apt install -y gcc
+          apt-get update
+          apt-get install -y gcc
 
       - uses: actions/checkout@v2
       - name: build all
