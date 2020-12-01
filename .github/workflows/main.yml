@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push: {}
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: install bazelisk
+        run: |
+          npm install -g @bazel/bazelisk
+
+      - name: install compiler
+        run: |
+          apt update
+          apt install -y gcc
+
+      - uses: actions/checkout@v2
+      - name: build all
+        run: bazelisk build //...
