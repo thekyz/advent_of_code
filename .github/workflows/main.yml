@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         calendar: [2020]
-        day: [day_01]
+        day: [day_01,day_02]
 
     steps:
       - uses: actions/checkout@v2
