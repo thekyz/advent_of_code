@@ -7,16 +7,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        calendar: [2020]
+        day: [day_01]
+
     steps:
-      - name: install bazelisk
-        run: |
-          sudo npm install -g @bazel/bazelisk
-
-      - name: install compiler
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc
-
       - uses: actions/checkout@v2
-      - name: build all
-        run: bazelisk build //...
+      - name: run
+        run: bazelisk run //${{ matrix.calendar }}/${{ matrix.day }}
